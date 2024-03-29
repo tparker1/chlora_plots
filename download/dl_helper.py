@@ -1,4 +1,5 @@
 import os
+import re
 import shutil
 # import pickle
 
@@ -151,7 +152,13 @@ def get_steps_remaining(destination_path):
     return step, steps_needed
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+def get_latest_file_number(destination_path):
+    files = os.listdir(destination_path)
+    files = [f for f in files if f.endswith('.csv')]
 
+    file_numbers = [int(re.search(r'(\d+)\D*$', f).group(1)) for f in files]
+    
+    return max(file_numbers, default=-1) + 1
 
 
 
