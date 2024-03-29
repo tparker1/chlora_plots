@@ -1,10 +1,8 @@
 import os
 import re
 import shutil
-# import pickle
 
 import time as tm
-# import datetime
 
 import numpy as np
 
@@ -14,11 +12,8 @@ import netCDF4 as nc
 import matplotlib.pyplot as plt
 import matplotlib.patheffects as pe
 
-# import geopandas as gpd
-import cartopy.crs as ccrs
-# from shapely.geometry import Point, shape, Polygon
 
-# from scipy.ndimage import center_of_mass
+import cartopy.crs as ccrs
 
 from joblib import Parallel, delayed
 

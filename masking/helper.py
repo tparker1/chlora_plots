@@ -9,14 +9,11 @@ import geopandas as gpd
 import cartopy.crs as ccrs
 from shapely.geometry import Point, shape, Polygon
 
-from scipy.ndimage import center_of_mass
-
 
 
 
 def get_gl_extents():
     # return {'min_lat': 58.7447917, 'max_lat': 88.953125, 'min_lon': -70.869792, 'max_lon': -8.1197917}
-    # return {'min_lat': 58, 'max_lat': 86, 'min_lon': -80, 'max_lon': -7}
     return {'min_lat': 58, 'max_lat': 89, 'min_lon': -81, 'max_lon': -3}
 
 def get_lons_lats(bounding_box):
