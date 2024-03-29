@@ -7,40 +7,39 @@ Please visit again later
 Initialize the masking process with an encompassing bounding box (of min/max lon/lat indices). 
 _Give **indices** for a box that is at least larger than all of the polygons you are interested in._
 
-Example: for the "Arrigo et al 2017 Sample Areas.shp" regions, I use initial bounds:
+Example: for the ``Arrigo et al 2017 Sample Areas.shp`` regions, I use initial bounds:
 
-minx_index, maxx_index, miny_index, maxy_index = "11800", "13029", "2894", "2325"
+>minx_index, maxx_index, miny_index, maxy_index = "11800", "13029", "2894", "2325"
 
-The first_day, last_day is arbitrary. 
+``visual check`` can help you decide if your bounding box is appropriate. 
 
-_Note: You will need to figure out which indices correspond to the initial encompassing bounding box._
 
 ### load polygons
 SET polygon_folder  (path containing polygon_file)
-SET polygon_file    (a single shp file with one to many polygons, such as "Arrigo et al 2017 Sample Areas.shp")
+SET polygon_file    (a single shp file with one to many polygons, such as ``Arrigo et al 2017 Sample Areas.shp``)
+SET group name **_note: if you subset the polygons, you must set group name again_**
 
 SET buffer_distance to expand the polygons
 
 #### Subset polygons
-After running the cell to load in all polygons in polygon_file, create subset (group) if needed. 
-
+Not necessary, but useful if you do not want to run all polygons at once. 
 SET regions - a list of Region IDs. 
 
-Subsetting is not necessary, but setting group as a group identifer is.  
+###  Visualize polygons before masking
+Another plot to visually inform you about your bounding box and polygons. Any part of a polygon that is outside of the bounding box will be lost. 
 
 ### Create Masks
-_This will store masked arrays on your system as pkl files (one .pkl for each polygon region). You should CHANGE the output path to an appropriate folder on your system._
+_This will store masked arrays on your system as pkl files (one .pkl for each polygon region).
+SET path_to_pkls_folder to a folder where you wish to store your regional masks
    
 The big idea:
 
-The given polygons (ex: Arrigo et al 2017 Sample Areas.shp) are mapped to the Ocean Colour lat/lon grid and saved (via a pkl file) as an numpy masked array.
-
-_IMPORTANT NOTE: The code is set up to run on ALL polygons in the shp file. If you only want a subset, change the "for x in range(len(polygons))" to something like "for x in x_of_interest" where "x_of_interest" is a list of integers corresponding to the polygon indicies you are interested in._
-
-_Example: To only get masks for Region 1 and Region 4 in "Arrigo et al 2017 Sample Areas.shp", I would set "x_of_interest = [1,3]"._
+The given polygons (ex: Arrigo et al 2017 Sample Areas.shp) are mapped to the Ocean Colour lat/lon grid and saved (via a pkl file) as an numpy masked array. This runs multiple regions in parallel. 
 
 ### Plot
-Can be used to visually check that your polygon masks are where you expect.
+Can be used to load in the masks and visually check that they are as expected.
+
+
 
 ## Step 2: download/retrieve_opendap_gl_chla.ipynb
 
