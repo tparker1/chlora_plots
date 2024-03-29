@@ -48,11 +48,17 @@ Visually confirm that the stored masks are as expected.
 # Step 2: download/retrieve_opendap_gl_*.ipynb
 _Note_ There are 2 types of files: _data_ and _means_
 
-_retrieve_opendap_gl__**_data_**_.ipynb_
+_retrieve_opendap_gl__**_data_**_.ipynb_ retrieves batches of netcdf files for the entire bounding box that encompasses the polygons (masks) in batches (default = 50 days). 
 
-_retrieve_opendap_gl__**_means_**_.ipynb_ gets the average chlor_a value over the entire region, per day, and stores the output as a .csv. Can be used for plots like
+_retrieve_opendap_gl__**_means_**_.ipynb_ computes and stores the daily average chlor_a value over each region (polygon/mask) and write the output to a .csv in batches of 500 days. 
 
-<img src="images/means.png" alt="timeseries plot of chlorophyll means for six different regions" width="200"/>
+_retrieve_opendap_gl__**_data_**_.ipynb_            |  _retrieve_opendap_gl__**_means_**_.ipynb_ 
+:-------------------------:|:-------------------------:
+retrieves batches of netcdf files for the entire bounding box that encompasses the polygons (masks) in batches (default = 50 days). | computes and stores the daily average chlor_a value over each region (polygon/mask) and write the output to a .csv in batches of 500 days. 
+:-------------------------:|:-------------------------:
+!<img src="images/data.png" alt="timeseries plot of chlorophyll means for six different regions" width="200"/> |  <img src="images/means.png" alt="timeseries plot of chlorophyll means for six different regions" width="200"/>
+
+
 
 
 ### Load Regional Masks
