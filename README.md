@@ -2,6 +2,7 @@
 Please visit again later
 
 ## Step 1: masking/create_masks.ipynb
+[masking/create_masks.ipynb](https://github.com/tparker1/chlora_plots/blob/c0e34ab347d5392280ceb00c8096bde6909150a6/masking/create_masks.ipynb) 
 
 ### Initialize
 Initialize the masking process with an encompassing bounding box (of min/max lon/lat **indices**). 
