@@ -1,13 +1,15 @@
-import matplotlib.pyplot as plt
-import cartopy.crs as ccrs
-import netCDF4 as nc
-import geopandas
-import matplotlib.patheffects as pe
-from scipy.ndimage import center_of_mass
-import geopandas as gpd
 import os
 import numpy as np
+import netCDF4 as nc
+
+import matplotlib.pyplot as plt
+import matplotlib.patheffects as pe
+
+import geopandas as gpd
+import cartopy.crs as ccrs
 from shapely.geometry import Point, shape, Polygon
+
+from scipy.ndimage import center_of_mass
 
 
 
@@ -39,7 +41,7 @@ def expand_bounds(polygon, distance):
 
 def load_polygons(polygon_filepath, buffer_distance=0):
 
-    polygons  = geopandas.GeoDataFrame.from_file(polygon_filepath)
+    polygons  = gpd.GeoDataFrame.from_file(polygon_filepath)
 
     polygons['geometry'] = polygons['geometry'].apply(expand_bounds, distance=buffer_distance)
     return polygons
