@@ -4,14 +4,14 @@ Please visit again later
 ## Step 1: masking/create_masks.ipynb
 
 ### Initialize
-Initialize the masking process with an encompassing bounding box (of min/max lon/lat indices). 
+Initialize the masking process with an encompassing bounding box (of min/max lon/lat **indices**). 
 _Give **indices** for a box that is at least larger than all of the polygons you are interested in._
 
 Example: for the _Arrigo et al 2017 Sample Areas.shp_ regions, I use initial bounds:
 
 >minx_index, maxx_index, miny_index, maxy_index = "11800", "13029", "2894", "2325"
 
-``visual check`` can help you decide if your bounding box is appropriate. 
+``visual check`` Plots the current bounding box on a map of Greenland.
 
 
 ### load polygons
@@ -28,19 +28,19 @@ Not necessary, but useful if you do not want to run all polygons at once.
 ``SET regions`` - a list of Region IDs. 
 
 ###  Visualize polygons before masking
-Another plot to visually inform you about your bounding box and polygons. Any part of a polygon that is outside of the bounding box will be lost. 
+Visually presents the bounding box and polygons to be masked. 
+
+_Any part of a polygon that is outside of the bounding box will be lost. _
 
 ### Create Masks
-_This will store masked arrays on your system as pkl files (one .pkl for each polygon region).
-
-``SET path_to_pkls_folder`` to a folder where you wish to store your regional masks
+``SET path_to_pkls_folder`` to a folder where you wish to store your regional masks (one .pkl for each polygon region)
    
 The big idea:
 
 The given polygons (ex: _Arrigo et al 2017 Sample Areas.shp_) are mapped to the Ocean Colour lat/lon grid and saved (via a pkl file) as an numpy masked array. This runs multiple regions in parallel. 
 
 ### Plot
-Can be used to load in the masks and visually check that they are as expected.
+Visually confirm that the stored masks are as expected.
 
 
 
