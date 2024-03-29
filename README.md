@@ -1,7 +1,7 @@
 # WIP 
 Please visit again later
 
-## Step 1: masking/create_masks.ipynb
+# Step 1: masking/create_masks.ipynb
 [masking/create_masks.ipynb](https://github.com/tparker1/chlora_plots/blob/c0e34ab347d5392280ceb00c8096bde6909150a6/masking/create_masks.ipynb) 
 
 ### Initialize
@@ -45,7 +45,15 @@ Visually confirm that the stored masks are as expected.
 
 
 
-## Step 2: download/retrieve_opendap_gl_chla.ipynb
+# Step 2: download/retrieve_opendap_gl_*.ipynb
+_Note_ There are 2 types of files: _data_ and _means_
+
+_retrieve_opendap_gl__**_data_**_.ipynb_
+
+_retrieve_opendap_gl__**_means_**_.ipynb_ gets the average chlor_a value over the entire region, per day, and stores the output as a .csv. Can be used for plots like
+
+<img src="images/means.png" alt="timeseries plot of chlorophyll means for six different regions" width="200"/>
+
 
 ### Load Regional Masks
 In step 1 you created and stored numpy masks for each region as a .pkl file. Now we will load them back into memory. CHANGE path_to_pkls_folder such that it points to the folder containing your pkl files. 
