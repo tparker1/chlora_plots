@@ -4,7 +4,7 @@ Please visit again later
 ## Step 1: masking/create_masks.ipynb
 
 ### Initialize
-Initialize our masking process with an encompassing bounding box (of min/max lon/lat indices). 
+Initialize the masking process with an encompassing bounding box (of min/max lon/lat indices). 
 _Give **indices** for a box that is at least larger than all of the polygons you are interested in._
 
 Example: for the "Arrigo et al 2017 Sample Areas.shp" regions, I use initial bounds:
@@ -15,10 +15,18 @@ The first_day, last_day is arbitrary.
 
 _Note: You will need to figure out which indices correspond to the initial encompassing bounding box._
 
-### Set & load polygon_file path
-SET polygon_file as the path to your polygons shp file (a single shp file with one to many polygons, such as "Arrigo et al 2017 Sample Areas.shp")
+### load polygons
+SET polygon_folder  (path containing polygon_file)
+SET polygon_file    (a single shp file with one to many polygons, such as "Arrigo et al 2017 Sample Areas.shp")
 
-The polygons are loaded into memory. 
+SET buffer_distance to expand the polygons
+
+#### Subset polygons
+After running the cell to load in all polygons in polygon_file, create subset (group) if needed. 
+
+SET regions - a list of Region IDs. 
+
+Subsetting is not necessary, but setting group as a group identifer is.  
 
 ### Create Masks
 _This will store masked arrays on your system as pkl files (one .pkl for each polygon region). You should CHANGE the output path to an appropriate folder on your system._
