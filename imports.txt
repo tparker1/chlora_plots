@@ -15,7 +15,6 @@ import matplotlib.pyplot
 import matplotlib.patheffects
 import matplotlib.colors
 
-
 import geopandas
 import cartopy.crs
 from shapely.geometry import Point, shape, Polygon
