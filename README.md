@@ -14,6 +14,8 @@ Example: for the _Arrigo et al 2017 Sample Areas.shp_ regions, I use initial bou
 
 ``visual check`` Plots the current bounding box on a map of Greenland.
 
+_Note: make bounding box tight so that step 2 runs smoothly_
+
 
 ### load polygons
 ``SET polygon_folder``  (path containing polygon_file)
@@ -48,21 +50,21 @@ Visually confirm that the stored masks are as expected.
 # Step 2: download/retrieve_opendap_gl_*.ipynb
 _Note_ There are 2 types of files: _data_ and _means_
 
-_retrieve_opendap_gl__**_data_**_.ipynb_ retrieves batches of netcdf files for the entire bounding box that encompasses the polygons (masks) in batches (default = 50 days). 
-
-_retrieve_opendap_gl__**_means_**_.ipynb_ computes and stores the daily average chlor_a value over each region (polygon/mask) and write the output to a .csv in batches of 500 days. 
-
 _retrieve_opendap_gl__**_data_**_.ipynb_            |  _retrieve_opendap_gl__**_means_**_.ipynb_ 
 :-------------------------:|:-------------------------:
-retrieves batches of netcdf files for the entire bounding box that encompasses the polygons (masks) in batches (default = 50 days). | computes and stores the daily average chlor_a value over each region (polygon/mask) and write the output to a .csv in batches of 500 days. 
-:-------------------------:|:-------------------------:
-!<img src="images/data.png" alt="timeseries plot of chlorophyll means for six different regions" width="200"/> |  <img src="images/means.png" alt="timeseries plot of chlorophyll means for six different regions" width="200"/>
+.netcdf | .csv
+retrieves batches of netcdf files for the entire bounding box that encompasses the polygons (masks) in batches (default = 50 days). | computes and stores the daily average chlor_a value over each region (polygon/mask) and write the output to a .csv in batches (default = 500 days). 
+<img src="images/data.png" alt="timeseries plot of chlorophyll means for six different regions" width="200"/> |  <img src="images/means.png" alt="timeseries plot of chlorophyll means for six different regions" width="200"/>
 
+## _retrieve_opendap_gl__**_data_**_.ipynb_  
+``SET path_to_pkls_folder`` This is the file of masks created in step 1. 
 
-
+Note: It is expected that there is only one group in this folder, and thus, there should only be 1 bounding box file. 
 
 ### Load Regional Masks
-In step 1 you created and stored numpy masks for each region as a .pkl file. Now we will load them back into memory. CHANGE path_to_pkls_folder such that it points to the folder containing your pkl files. 
+``SET path_to_pkls_folder`` In step 1 you created and stored numpy masks for each region as a .pkl file. Now we will load them back into memory. CHANGE path_to_pkls_folder such that it points to the folder containing your pkl files. 
+
+_Note: It is expected that there is only one group in this folder, and thus, there should only be 1 bounding box file._
 
 
 _Note: If your masked files are not sequentially named then update the for x in range(6)_
