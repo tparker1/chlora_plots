@@ -1,4 +1,5 @@
 # Using the Pipeline 
+[imports.txt](https://github.com/tparker1/chlora_plots/blob/f34d25a84aa5afd1f2fbe14a2c6de410eedc8986/imports.txt) contains a list of libraries used throughout this pipeline
 
 # Step 1: masking/create_masks.ipynb
 [masking/create_masks.ipynb](https://github.com/tparker1/chlora_plots/blob/c0e34ab347d5392280ceb00c8096bde6909150a6/masking/create_masks.ipynb) 
