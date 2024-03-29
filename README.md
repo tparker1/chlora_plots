@@ -1,5 +1,4 @@
-# WIP 
-Please visit again later
+# Using the Pipeline 
 
 # Step 1: masking/create_masks.ipynb
 [masking/create_masks.ipynb](https://github.com/tparker1/chlora_plots/blob/c0e34ab347d5392280ceb00c8096bde6909150a6/masking/create_masks.ipynb) 
@@ -33,10 +32,12 @@ Not necessary, but useful if you do not want to run all polygons at once.
 ###  Visualize polygons before masking
 Visually presents the bounding box and polygons to be masked. 
 
-_Any part of a polygon that is outside of the bounding box will be lost. _
-
 ### Create Masks
-``SET path_to_pkls_folder`` to a folder where you wish to store your regional masks (one .pkl for each polygon region)
+``SET path_to_pkls_folder`` to a folder where you wish to store your regional masks (one .pkl for each polygon region). Ensure _group_ is set.
+
+Example of the masks folder structure:
+
+<img src="images/mask_folder_struct.png" alt="" width="200"/>
    
 The big idea:
 
@@ -50,25 +51,31 @@ Visually confirm that the stored masks are as expected.
 # Step 2: download/retrieve_opendap_gl_*.ipynb
 _Note_ There are 2 types of files: _data_ and _means_
 
-_retrieve_opendap_gl__**_data_**_.ipynb_            |  _retrieve_opendap_gl__**_means_**_.ipynb_ 
+[_retrieve_opendap_gl__**_data_**_.ipynb_](https://github.com/tparker1/chlora_plots/blob/63bfd92d86f2549ce19a49713800a212d32c840c/download/retrieve_opendap_gl_chla_data.ipynb)         |  [_retrieve_opendap_gl__**_means_**_.ipynb_](https://github.com/tparker1/chlora_plots/blob/63bfd92d86f2549ce19a49713800a212d32c840c/download/retrieve_opendap_gl_chla_means.ipynb) 
 :-------------------------:|:-------------------------:
 .netcdf | .csv
 retrieves batches of netcdf files for the entire bounding box that encompasses the polygons (masks) in batches (default = 50 days). | computes and stores the daily average chlor_a value over each region (polygon/mask) and write the output to a .csv in batches (default = 500 days). 
 <img src="images/data.png" alt="timeseries plot of chlorophyll means for six different regions" width="200"/> |  <img src="images/means.png" alt="timeseries plot of chlorophyll means for six different regions" width="200"/>
 
-## _retrieve_opendap_gl__**_data_**_.ipynb_  
-``SET path_to_pkls_folder`` This is the file of masks created in step 1. 
-
-Note: It is expected that there is only one group in this folder, and thus, there should only be 1 bounding box file. 
-
+## How to use them
 ### Load Regional Masks
 ``SET path_to_pkls_folder`` In step 1 you created and stored numpy masks for each region as a .pkl file. Now we will load them back into memory. CHANGE path_to_pkls_folder such that it points to the folder containing your pkl files. 
 
 _Note: It is expected that there is only one group in this folder, and thus, there should only be 1 bounding box file._
 
+### Define output folders
+[_retrieve_opendap_gl__**_data_**_.ipynb_](https://github.com/tparker1/chlora_plots/blob/63bfd92d86f2549ce19a49713800a212d32c840c/download/retrieve_opendap_gl_chla_data.ipynb)         |  [_retrieve_opendap_gl__**_means_**_.ipynb_](https://github.com/tparker1/chlora_plots/blob/63bfd92d86f2549ce19a49713800a212d32c840c/download/retrieve_opendap_gl_chla_means.ipynb) 
+:-------------------------:|:-------------------------:
+``SET destination_path``: Where you would like to store the batched data. Files may be large. | ``SET destination_path``: : Where you would like to store the daily average .csv files
+``SET temp_path``: A temporary staging space for files being created. |
 
-_Note: If your masked files are not sequentially named then update the for x in range(6)_
 
+Run the cell to obtain the data in batches. 
+If the code encounters more than 5 errors, you will need to manually restart by running the cell again. 
+
+
+# Step 3: plotting
+readme WIP. 
 
 
 
