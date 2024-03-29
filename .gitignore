@@ -1,2 +1,10 @@
 
 .DS_Store
+
+/chlora_data
+/data
+/figures
+/masks
+/means
+/polygons
+/sandbox
