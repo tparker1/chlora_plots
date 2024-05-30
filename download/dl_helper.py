@@ -12,7 +12,6 @@ import netCDF4 as nc
 import matplotlib.pyplot as plt
 import matplotlib.patheffects as pe
 
-
 import cartopy.crs as ccrs
 
 from joblib import Parallel, delayed
@@ -107,9 +106,10 @@ def process_batch(i, step, bounding_box, lons, lats, destination_path, staging_p
     firstday = str(i)
     lastday = str(i + step - 1)
     ds = get_ds(firstday, lastday, bounding_box)
-    process_year(ds, firstday, lons, lats, destination_path, staging_path)
+    save_batch(ds, firstday, lons, lats, destination_path, staging_path)
+    ds.close()
 
-def process_year(ds, firstday, lons, lats, destination_path, staging_path):
+def save_batch(ds, firstday, lons, lats, destination_path, staging_path):
     time_var = ds.variables['time'][:]
     
     year = get_mmddyy(time_var[0]).tm_year
@@ -143,7 +143,6 @@ def get_steps_remaining(destination_path):
 
     steps_needed = [i for i in range(start, stop, step) if i not in completed_steps]
 
-    print("Batches remaining: ", len(steps_needed))
     return step, steps_needed
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
