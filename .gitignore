@@ -10,4 +10,5 @@
 /sandbox/videos
 /timeseries/frames
 
-/plots
+/detrend/plots
+/sandbox
